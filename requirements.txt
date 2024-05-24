@@ -1,0 +1,10 @@
+openai==1.28.0
+python-dotenv==1.0.1
+numpy==1.26.4
+PyMuPDF==1.24.3
+PyPDF2==3.0.1
+tiktoken==0.6.0
+PyYAML==6.0.1
+tenacity==8.3.0
+chromadb==0.5.0
+pandas==2.2.2
