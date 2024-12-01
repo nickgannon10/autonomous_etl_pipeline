@@ -1,9 +1,9 @@
 import os
 import json
-from src.openai_client import OpenAIClient
+from RAG_summarizer.src.x_client import OpenAIClient
 import tiktoken
 
-openai_client = OpenAIClient()
+x_client = OpenAIClient()
 
 def num_tokens_from_string(string: str, encoding_name: str) -> int:
     encoding = tiktoken.get_encoding(encoding_name)
@@ -11,7 +11,7 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
     return num_tokens
 
 def generate_summary(documents):
-    openai_client = OpenAIClient()
+    x_client = OpenAIClient()
     
     # Filter out documents with token count less than 30
     filtered_documents = []
@@ -30,7 +30,7 @@ def generate_summary(documents):
     
     prompt = f"Please be sure to touch on Termination, Confidentiality, and Indemnification provisions in your answer: Documents: {flattened_documents}"
     
-    response = openai_client.generate_completion(
+    response = x_client.generate_completion(
         messages=[
             {"role": "system", "content": "Below you will be provided with a set of documents. Please summarize the similarities or differences among the Termination, Confidentiality, and Indemnification provisions."},
             {"role": "user", "content": prompt}

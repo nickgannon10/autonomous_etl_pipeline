@@ -5,11 +5,11 @@ import os
 
 from data_models.toc_classification_model import TableOfContentsClassifier
 from utils.get_prompt import get_yaml_prompt
-from utils.openai_client import OpenAIClient
+from utils.x_client import OpenAIClient
 
 class TOCClassifier:
     def __init__(self, pdf_hyperlink_summary_path: str, toc_classification_prompt_path: str):
-        self.openai_client = OpenAIClient()
+        self.x_client = OpenAIClient()
         self.pdf_hyperlink_summary_path = pdf_hyperlink_summary_path
         self.toc_classification_prompt_path = toc_classification_prompt_path
         self.system_prompt = self.load_prompt(key="system_prompt")
@@ -63,7 +63,7 @@ class TOCClassifier:
         ]
 
         try:
-            response_message = self.openai_client.generate_completion(
+            response_message = self.x_client.generate_completion(
                 messages=messages,
                 tools=self._get_toc_classification_tool(),
                 tool_choice={

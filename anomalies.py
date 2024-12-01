@@ -2,7 +2,7 @@ import fitz
 import json
 import os
 import csv
-from utils.openai_client import Client
+from utils.x_client import OpenAIClient
 
 class AnomalyPDFTableOfContentsExtractor:
     def __init__(self, pdf_path, output_dir):
@@ -127,7 +127,7 @@ class AnomalyPDFClassifier:
         self.pdf_path = pdf_path
         self.output_json_dir = output_json_dir
         self.output_csv_dir = output_csv_dir
-        self.openai_client = OpenAIClient(response_format=None)
+        self.x_client = OpenAIClient(response_format=None)
         self.results = []
 
     def extract_text_from_page(self, page):
@@ -135,7 +135,7 @@ class AnomalyPDFClassifier:
 
     def classify_page(self, page_text: str) -> str:
         prompt = f"Below you are given a page of text. Please read the text and return a single phrase to classify the contents of that page, avoiding the use of quotation marks around the phrase. If there is an obvious header, please return that:\n\n{page_text}"
-        response = self.openai_client.generate_completion(
+        response = self.x_client.generate_completion(
             messages=[{"role": "user", "content": prompt}],
             max_tokens=10,
             temperature=0.5

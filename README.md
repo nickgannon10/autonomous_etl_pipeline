@@ -77,7 +77,7 @@ In summary this modular approach goes as follows: the preprocessing step establi
     - `toc_classification_prompt.yaml`: This YAML holds the prompt used in toc_classifier.py.
   - `utils/`
     - `get_yaml_prompt.py`: Holds the functionality to read in YAML prompts
-    - `openai_client.py`: Holds the OpenAI client used in toc_classifier.py and anomalies.py
+    - `x_client.py`: Holds the OpenAI client used in toc_classifier.py and anomalies.py
     - `token_counter.py`: This file was used on this side so I could do some calculations to determine a price estimate for API calls (should be less than 50 dollars)
 
 # Assumptions
@@ -160,7 +160,7 @@ The RAG (Retrieval-Augmented Generation) Summarizer App is an extension to the m
   - `config.py`: Configuration settings for the app
   - `embedding_utils.py`: Utilities for generating embeddings
   - `file_processor.py`: Functions for processing files
-  - `openai_client.py`: Client for interacting with the OpenAI API
+  - `x_client.py`: Client for interacting with the OpenAI API
   - `query_executor.py`: Executes queries against the vector database
 - `summarizer.py`: Generates summaries using the retrieved chunks and LLM
 - `upsert_and_query.py`: Upserts chunks into the vector database and performs queries against each vector container
