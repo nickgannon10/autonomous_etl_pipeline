@@ -1,5 +1,11 @@
 # README.md Format
 
+# Repo Overiew:
+
+- This project creates an LLM-based ETL pipeline for cleaning a diverse set of financial/legal documents. Ultimatley, a reference graph is created that neatly partitions up the documents in sections, sub-sections, ..., sub^(nth)-sections. This data cleaning method drives the question answering and summarization capabilities of this repo. Additionally, this code base can be quickly modified to complete auditing or information extraction tasks.
+
+Sections:
+
 1. Solution Architecture
 2. Codebase Architecture
 3. Assumptions
