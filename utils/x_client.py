@@ -10,7 +10,8 @@ class OpenAIClient:
     def __init__(self, response_format: Optional[Dict] = None):
         load_dotenv()
         self.oai_client = OpenAI(
-            api_key=os.getenv("OPENAI_API_KEY"),
+            api_key=os.getenv("XAI_API_KEY"),
+            base_url="https://api.x.ai/v1/chat/completions",
         )
         self.response_format = response_format
 
@@ -18,27 +19,13 @@ class OpenAIClient:
     def generate_completion(
         self,
         messages: List[Dict],
-        tools: Optional[List] = None,
-        max_tokens: Optional[int] = None,
-        temperature: int = 0,
-        model: str = "gpt-4-turbo",
-        logprobs: Optional[bool] = None,
-        top_logprobs: Optional[int] = None,
-        tool_choice: Union[Dict, str] = 'auto',
+        model: str = "grok-beta",
     ):
         completions_params = {
             "messages": messages,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
             "model": model,
             "response_format": self.response_format,
-            "logprobs": logprobs,
-            "top_logprobs": top_logprobs,
         }
-
-        if tools is not None:
-            completions_params["tools"] = tools
-            completions_params["tool_choice"] = tool_choice
 
         response_message = None
 
@@ -64,10 +51,8 @@ class OpenAIClient:
     def get_embeddings(self, content: str):
         return (
             self.oai_client.embeddings.create(
-                input=content, model="text-embedding-ada-002"
+                input=content, model="https://api.x.ai/v1/embeddings"
             )
             .data[0]
             .embedding
         )
-
-

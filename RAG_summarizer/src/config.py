@@ -8,7 +8,7 @@ load_dotenv()
 current_directory = os.getcwd()
 
 # Retrieve the OpenAI API key from environment variables
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+XAI_API_KEY = os.getenv("XAI_API_KEY")
 
 # Define dynamic paths based on the current working directory
 JSON_DIRECTORY = os.getenv("JSON_DIRECTORY", os.path.join(current_directory, "outputs", "classified_outputs"))

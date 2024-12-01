@@ -2,7 +2,7 @@ import fitz
 import json
 import os
 import csv
-from utils.openai_client import OpenAIClient
+from utils.openai_client import Client
 
 class AnomalyPDFTableOfContentsExtractor:
     def __init__(self, pdf_path, output_dir):
