@@ -1,4 +1,4 @@
-openai==1.28.0
+openai==1.55.3
 python-dotenv==1.0.1
 numpy==1.26.4
 PyMuPDF==1.24.3
