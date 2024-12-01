@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
+xai_api_key = os.getenv("XAI_API_KEY")
 
 openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-    api_key=openai_api_key,
-    model_name="text-embedding-ada-002"
+    api_key=xai_api_key,
+    model_name="https://api.x.ai/v1/embeddings"
 )
 
 def clip_to_token_limit(text, limit, encoding_name):
